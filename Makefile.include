@@ -1,0 +1,48 @@
+#  llzlab - luolongzhi algorithm lab 
+#  Copyright (C) 2012 luolongzhi (Chengdu, China)
+#
+#  This program is part of llzlab, all copyrights are reserved by luolongzhi. 
+#
+#  filename: Makefile
+#  time    : 2012/07/07 18:42 
+#  author  : luolongzhi ( luolongzhi@gmail.com )
+#
+
+
+ARCH =
+
+DEBUG = Y
+
+CROSS = 
+
+STRIP = 
+
+ifeq ($(ARCH), ARM)
+CROSS = arm-linux-
+endif
+
+CC = $(CROSS)gcc
+
+CFLAGS = -I. 
+
+ifeq ($(ARCH), ARM)
+	CFLAGS += -D__ARM__ -mcpu=arm9tdmi
+endif
+
+ifeq ($(DEBUG), Y)
+	CFLAGS += -g -D__DEBUG__
+	CFLAGS += -Wall
+	STRIP = file
+else
+	CFLAGS += -O3	
+#	CFLAGS += -O2	
+	CFLAGS += -Wall
+	STRIP = strip
+endif
+
+
+AR = $(CROSS)ar
+RANLIB = $(CROSS)ranlib
+
+.PHONY : all install clean 
+

@@ -1,0 +1,6 @@
+Easy and fast fft C lib
+
+Support float and fix point fft/ifft
+
+Easy Api to use, init -> fft/ifft -> uninit
+
